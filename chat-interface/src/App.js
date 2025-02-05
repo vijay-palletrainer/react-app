@@ -24,7 +24,8 @@ const ChatInterface = () => {
       });
 
       const data = await response.json();
-      const botMessageContent = data.msg || "No response received.";
+      const body = JSON.parse(data.body);
+      const botMessageContent = body.msg || "No response received.";
       const botMessage = { role: "bot", content: botMessageContent };
 
       setMessages((prevMessages) => [...prevMessages, botMessage]);
